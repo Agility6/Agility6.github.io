@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://agility6.github.io">
-  <title>Archives: 2021 | Hexo</title>
+  <title>✨Vue通信 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://agility6.github.io/archives/2021/index.html">
+  <meta name="description" content="Vue通信常用的方法在开发的时候，我们最常用的就是组件化思想，使用组件化开发，提高复用性等等，那么思考一下组件之间的通信也是一个十分重要的知识，组件可分为以下几类  父组件 子组件 兄弟组件  同样，组件之间的通信也可以分为以下几类  父组件 → 子组件 子组件 → 父组件 兄弟组件 → 兄弟组件  下面就来总结总结组件之间的通信的姿势吧👀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="✨Vue通信">
+<meta property="og:url" content="https://agility6.github.io/2022/05/25/%E2%9C%A8Vue%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Vue通信常用的方法在开发的时候，我们最常用的就是组件化思想，使用组件化开发，提高复用性等等，那么思考一下组件之间的通信也是一个十分重要的知识，组件可分为以下几类  父组件 子组件 兄弟组件  同样，组件之间的通信也可以分为以下几类  父组件 → 子组件 子组件 → 父组件 兄弟组件 → 兄弟组件  下面就来总结总结组件之间的通信的姿势吧👀">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-25T14:10:08.000Z">
+<meta property="article:modified_time" content="2022-06-04T12:23:21.893Z">
 <meta property="article:author" content="Agility6">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -169,60 +174,290 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-✨Vue通信" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/19/%E2%9C%A8%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-04-19T15:19:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/19/%E2%9C%A8%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">✨搭建hexo博客</a>
+    <h1 class="article-title" itemprop="name">
+      ✨Vue通信
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/05/25/%E2%9C%A8Vue%E9%80%9A%E4%BF%A1/" class="archive-article-date">
+  	<time datetime="2022-05-25T14:10:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="Vue通信常用的方法"><a href="#Vue通信常用的方法" class="headerlink" title="Vue通信常用的方法"></a>Vue通信常用的方法</h2><p>在开发的时候，我们最常用的就是组件化思想，使用组件化开发，提高复用性等等，那么思考一下组件之间的通信也是一个十分重要的知识，组件可分为以下几类</p>
+<ul>
+<li>父组件</li>
+<li>子组件</li>
+<li>兄弟组件</li>
+</ul>
+<p>同样，组件之间的通信也可以分为以下几类</p>
+<ul>
+<li>父组件 → 子组件</li>
+<li>子组件 → 父组件</li>
+<li>兄弟组件 → 兄弟组件</li>
+</ul>
+<p>下面就来总结总结组件之间的通信的姿势吧👀</p>
+<span id="more"></span>
+
+<h3 id="父组件-→-子组件💡"><a href="#父组件-→-子组件💡" class="headerlink" title="父组件 → 子组件💡"></a>父组件 → 子组件💡</h3><h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><p>使用props就可以实现父组件传递给子组件了，十分简单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// children</span><br><span class="line">const children = &#123;</span><br><span class="line">	template: `</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;Hello Parent&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;显示App里面的内容：&#123;&#123;appMessage&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   `</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// vm作为我们的父组件</span><br><span class="line">const vm = new Vue(&#123;</span><br><span class="line">	el: &#x27;#app&#x27;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		appMessage: &#x27;我是App的内容&#x27;</span><br><span class="line">	&#125;,</span><br><span class="line">	components: &#123;children&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用步骤</p>
+<ol>
+<li>一传</li>
+<li>二放</li>
+<li>三用</li>
+</ol>
+<p>十分优雅简单</p>
+<h5 id="一传"><a href="#一传" class="headerlink" title="一传"></a>一传</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 一传 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">children</span> <span class="attr">:app-message</span>=<span class="string">&quot;appMessage&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">children</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>传递的时候我们应该注意什么呢？</p>
+<ul>
+<li>命名的注意事项，如果使用的是驼峰命名法，就应该写成<code>app-message</code></li>
+<li>传递数据是静态还是动态<ul>
+<li>如果只是传递字符串就可以不适用<code>v-bind</code></li>
+<li><strong>传递数字：</strong>这里是需要使用<code>v-bind</code>的</li>
+<li>布尔值：也是需要用<code>v-bind</code>的</li>
+</ul>
+</li>
+</ul>
+<h5 id="二放"><a href="#二放" class="headerlink" title="二放"></a>二放</h5><p>放在哪呢？记住那个组件要用就放在哪里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// children</span><br><span class="line">const children = &#123;</span><br><span class="line">	props: [&#x27;appMessage&#x27;]</span><br><span class="line">	template: `</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;Hello Parent&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;显示App里面的内容：&#123;&#123;appMessage&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   `</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么放的时候我们应该注意什么呢？</p>
+<ul>
+<li>字符串数组，组数中的字符串就是传递時的名称</li>
+<li><strong>对象，对象可以设置传递時的类型，也可以设置默认值等</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 对象，对象可以设置传递時的类型，也可以设置默认值等</span><br><span class="line">const children = &#123;</span><br><span class="line">	props: &#123;</span><br><span class="line">		appMessage： &#123;</span><br><span class="line">			type: String,</span><br><span class="line">			default: &#x27;我是默认值&#x27;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	template: `</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;Hello Parent&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;显示App里面的内容：&#123;&#123;appMessage&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   `</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="三用"><a href="#三用" class="headerlink" title="三用"></a>三用</h5><p>直接使用就完事了！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// children</span><br><span class="line">const children = &#123;</span><br><span class="line">	props: [&#x27;appMessage&#x27;]</span><br><span class="line">	template: `</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;Hello Parent&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;显示App里面的内容：&#123;&#123;appMessage&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   `</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// vm作为我们的父组件</span><br><span class="line">const vm = new Vue(&#123;</span><br><span class="line">	el: &#x27;#app&#x27;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		appMessage: &#x27;我是App的内容&#x27;</span><br><span class="line">	&#125;,</span><br><span class="line">	components: &#123;children&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结： prop 只可以从上一级组件传递到下一级组件（父子组件），即所谓的单向数据流。而且 prop 只读，不可被修改，所有修改都会失效并警告。</p>
+</blockquote>
+<h3 id="子组件-→-父组件💡"><a href="#子组件-→-父组件💡" class="headerlink" title="子组件 → 父组件💡"></a>子组件 → 父组件💡</h3><h4 id="emit"><a href="#emit" class="headerlink" title="$emit"></a>$emit</h4><p>简单来说就是，子组件发送一个’请求‘，然后父组件监听并接受参数</p>
+<ol>
+<li>一创</li>
+<li>二发</li>
+<li>三接</li>
+<li>四执</li>
+</ol>
+<h5 id="一创"><a href="#一创" class="headerlink" title="一创"></a>一创</h5><p>创建是在父组件中创建函数，表示子组件发送过来的东西要用来干嘛呢？</p>
+<p>简单创建一个函数用于打印子组件传入的值吧</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const vm = new Vue(&#123;</span><br><span class="line">	el: &#x27;#app&#x27;,</span><br><span class="line">    components: &#123;children&#125;,</span><br><span class="line">	methods : &#123;</span><br><span class="line">		shownuber(number) &#123;</span><br><span class="line">			console.log(number)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="二发"><a href="#二发" class="headerlink" title="二发"></a>二发</h5><p>发送就是使用<code>$emit</code>进行发送的，看看代码吧</p>
+<blockquote>
+<p>第一个参数就是绑定一个自定义事件</p>
+<p>第二个参数就是传入的值是多少</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// children</span><br><span class="line">const children = &#123;</span><br><span class="line">	props: [&#x27;appMessage&#x27;]</span><br><span class="line">	template: `</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;Hello Parent&lt;/div&gt;</span><br><span class="line">      &lt;button @click=&quot;sendMessage&quot;&gt;发送&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   `,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		sendMessage() &#123;</span><br><span class="line">			this.$emit(&#x27;shownuber&#x27;,&#x27;111&#x27;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="三接"><a href="#三接" class="headerlink" title="三接"></a>三接</h5><p>接受的意思就是，在父组件中通过v-on去监听</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">children</span> @<span class="attr">shownuber</span>=<span class="string">&quot;shownuber&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">children</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="四执"><a href="#四执" class="headerlink" title="四执"></a>四执</h5><p>执行shownuber()的内容</p>
+<blockquote>
+<p>完成！✨</p>
+</blockquote>
+<h3 id="全局事件总线（GlobalEventBus）💡"><a href="#全局事件总线（GlobalEventBus）💡" class="headerlink" title="全局事件总线（GlobalEventBus）💡"></a>全局事件总线（GlobalEventBus）💡</h3><p>全局事件总线可以解决各个组件之间的通信，其次必须满足</p>
+<ol>
+<li>所有的组件对象都必须能看见它</li>
+<li>这个对象必须能够使用<code>$on</code> <code>$emit</code> <code>$off</code> 方法去绑定、触发和解绑事件</li>
+</ol>
+<h5 id="小思考👀"><a href="#小思考👀" class="headerlink" title="小思考👀"></a>小思考👀</h5><p>对于第一点要求，就可以很清楚的明白这个<code>bus</code>应该定义在<code>vm</code>身上，这里可以引出一个小问题，思考一下<code>vm</code>与<code>componen</code>的关系，为什么定义在vm身上</p>
+<blockquote>
+<p>❓组件对象可以访问到呢？</p>
+<p>💡这里Vue做了一个很棒的事情，就是<code>VueComponent.prototype.__proto__ === Vue.prototype</code></p>
+<p>💡让组件实例对象vc可以访问到Vue原型上的属性、方法</p>
+</blockquote>
+<p>所以第一个条件就能满足了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">   	...</span><br><span class="line">   	beforeCreate() &#123;</span><br><span class="line">   		Vue.prototype.$bus = this // 安装全局事件总线，$bus 就是当前应用的 vm</span><br><span class="line">   	&#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用前我们得明白，谁是发送数据的人，谁是接收的人</p>
+<p>接收数据：给该组件添加自定义事件，事件回调留在A组件自身，并且在组件销毁之后解绑事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 接收数据的人</span><br><span class="line">const cpnA = &#123;</span><br><span class="line">	template: `&lt;div&gt;Hello A&lt;/div&gt;`,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		consolemessage(text) &#123;</span><br><span class="line">			console.log(text)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	mounted() &#123;</span><br><span class="line">		this.$bus.$on(&#x27;consolemessage&#x27;,this.consolemessage)</span><br><span class="line">	&#125;,</span><br><span class="line">	brforeDestroy() &#123;</span><br><span class="line">		this.$bus.$off(&#x27;consolemessage&#x27;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发送数据：使用this.$bus.$emit(‘xxx’ , 传入数据)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 发送数据</span><br><span class="line">const cpnB = &#123;</span><br><span class="line">	template: `</span><br><span class="line">	&lt;div&gt;Hello B&lt;/div&gt;</span><br><span class="line">	&lt;button @click=&quot;seedmessage&quot;&gt;发送&lt;/button&gt;</span><br><span class="line">	`,</span><br><span class="line">	data() &#123;</span><br><span class="line">		return() &#123;</span><br><span class="line">			cpnbmessage: &#x27;我是cpnB的信息&#x27;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		seedmessage() &#123;</span><br><span class="line">			this.$bus.$emit(&#x27;consolemessage&#x27;,this.cpnbmessage)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️全局事件总线，在项目较大，就容易造成难以维护了</p>
+</blockquote>
+<h3 id="Vuex💡"><a href="#Vuex💡" class="headerlink" title="Vuex💡"></a>Vuex💡</h3><p>在项目中最常用的还是Vuex去管理常用的数据</p>
+<p>这里不做过多的介绍了🧨</p>
+<blockquote>
+<p><code>state</code>：用于数据的存储，是store中的唯一数据源</p>
+<p><code>getters</code>：如vue中的计算属性一样，基于state数据的二次包装，常用于数据的筛选和多个数据的相关性计算</p>
+<p><code>mutations</code>：类似函数，改变state数据的唯一途径，且不能用于处理异步事件</p>
+<p><code>actions</code>：类似于<code>mutation</code>，用于提交<code>mutation</code>来改变状态，而不直接变更状态，可以包含任意异步操作</p>
+<p><code>modules</code>：类似于命名空间，用于项目中将各个模块的状态分开定义和操作，便于维护</p>
+</blockquote>
+<h3 id="总结💡"><a href="#总结💡" class="headerlink" title="总结💡"></a>总结💡</h3><p>常见的使用场景可以三类</p>
+<ul>
+<li><p>父子组件通信: <code>props</code>; <code>$parent</code> / <code>$children</code>; <code>provide</code> / <code>inject</code> ; <code>ref</code> ;  <code>$attrs</code> / <code>$listeners</code></p>
+</li>
+<li><p>兄弟组件通信: <code>eventBus</code> ;     vuex</p>
+</li>
+<li><p>跨级通信:  <code>eventBus</code>；Vuex；<code>provide</code> / <code>inject</code> 、<code>$attrs</code> / <code>$listeners</code></p>
+</li>
+</ul>
+<blockquote>
+<p>本次只总结了：常用的几类而且🥰</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://agility6.github.io/2022/05/25/%E2%9C%A8Vue%E9%80%9A%E4%BF%A1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/06/02/%E2%9C%A8Flex%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ✨Flex布局
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/05/25/%E2%9C%A8%E5%AE%9E%E7%8E%B0Promise/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">✨实现Promise</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E9%80%9A%E4%BF%A1%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">Vue通信常用的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6-%E2%86%92-%E5%AD%90%E7%BB%84%E4%BB%B6%F0%9F%92%A1"><span class="toc-number">1.</span> <span class="toc-text">父组件 → 子组件💡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#props"><span class="toc-number">1.1.</span> <span class="toc-text">props</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%BC%A0"><span class="toc-number">1.1.1.</span> <span class="toc-text">一传</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E6%94%BE"><span class="toc-number">1.1.2.</span> <span class="toc-text">二放</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E7%94%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">三用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BB%84%E4%BB%B6-%E2%86%92-%E7%88%B6%E7%BB%84%E4%BB%B6%F0%9F%92%A1"><span class="toc-number">2.</span> <span class="toc-text">子组件 → 父组件💡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emit"><span class="toc-number">2.1.</span> <span class="toc-text">$emit</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E5%88%9B"><span class="toc-number">2.1.1.</span> <span class="toc-text">一创</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8F%91"><span class="toc-number">2.1.2.</span> <span class="toc-text">二发</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E6%8E%A5"><span class="toc-number">2.1.3.</span> <span class="toc-text">三接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9B%E6%89%A7"><span class="toc-number">2.1.4.</span> <span class="toc-text">四执</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%EF%BC%88GlobalEventBus%EF%BC%89%F0%9F%92%A1"><span class="toc-number">3.</span> <span class="toc-text">全局事件总线（GlobalEventBus）💡</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%8F%E6%80%9D%E8%80%83%F0%9F%91%80"><span class="toc-number">3.0.1.</span> <span class="toc-text">小思考👀</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vuex%F0%9F%92%A1"><span class="toc-number">4.</span> <span class="toc-text">Vuex💡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%F0%9F%92%A1"><span class="toc-number">5.</span> <span class="toc-text">总结💡</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -245,8 +480,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
